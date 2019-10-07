@@ -1,0 +1,10 @@
+SELECT
+    [CarModel],
+    [CarMaker],
+    SUM([SalePriceInDollar]) AS [TotalSalesPrice]
+FROM dbo.[CarSales]
+WHERE
+    [SaleDate] >= DATEADD(day,- 30, CONVERT(DATE, getdate()))
+GROUP BY
+    [CarModel],
+    [CarMaker];
